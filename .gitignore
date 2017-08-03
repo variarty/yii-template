@@ -1,0 +1,22 @@
+# IDE settings ignore
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# Mac DS_Store Files
+.DS_Store
+
+# composer & bower dir
+/vendor
+
+# npm dir
+/node_modules
+
+# assets
+/app/assets/dist/*
