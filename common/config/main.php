@@ -1,11 +1,12 @@
 <?php
 
 return [
-	'language'      => 'ru-RU',
-	'bootstrap'		=> ['log'],
-	'vendorPath'    => dirname(__DIR__) . '/../vendor',
+    'sourceLanguage'    => 'en-US',
+	'language'          => 'ru-RU',
+	'bootstrap'		    => ['log'],
+	'vendorPath'        => dirname(__DIR__) . '/../vendor',
 
-	'components'	=> [
+	'components' => [
         /**
          * App Database.
          */
@@ -14,7 +15,7 @@ return [
          * Yii2 mailer component.
          * @see http://www.yiiframework.com/doc-2.0/yii-swiftmailer-mailer.html
          */
-        'mailer' => 'mailer.php',
+        'mailer' => require 'mailer.php',
         /**
          * Yii2 log component.
          * @see http://www.yiiframework.com/doc-2.0/yii-log-filetarget.html
@@ -25,6 +26,11 @@ return [
          * @see http://www.yiiframework.com/doc-2.0/yii-i18n-formatter.html
          */
         'formatter' => require 'formatter.php',
+        /**
+         * Yii2 Internationalization.
+         * @see http://www.yiiframework.com/doc-2.0/guide-tutorial-i18n.html
+         */
+        'i18n' => require 'i18n.php',
     ],
     'params' => require 'params.php',
 ];

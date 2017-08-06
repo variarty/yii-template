@@ -20,11 +20,10 @@ class Identity extends User implements IdentityInterface
 
     /**
      * @inheritdoc
-     * @todo use Exception
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-
+        return self::findOne(['auth_key' => $token]);
     }
 
     /**

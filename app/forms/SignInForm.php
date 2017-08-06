@@ -61,13 +61,12 @@ class SignInForm extends Model
 
     /**
      * @inheritdoc
-     * @todo use Yii::t()
      */
     public function attributeLabels()
     {
         return [
-            'email' => 'Email',
-            'password' => 'Пароль',
+            'email'     => Yii::t('app', 'Email'),
+            'password'  => Yii::t('app', 'Password'),
         ];
     }
 }

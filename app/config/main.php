@@ -38,6 +38,11 @@ return \yii\helpers\ArrayHelper::merge([
             'fileMode'  => 509, // AS 0775
             'bundles'   => require 'bundles.php'
         ],
+        /**
+         * Yii2 Internationalization.
+         * @see http://www.yiiframework.com/doc-2.0/guide-tutorial-i18n.html
+         */
+        'i18n' => require 'i18n.php',
     ],
     'params' => require 'params.php',
 ], include 'main_dev.php');
