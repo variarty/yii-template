@@ -28,25 +28,23 @@ class User extends ActiveRecord
     }
 
     /**
-     * @param int $id
-     * @param string $password
      * @param string $email
+     * @param string $password
      * @param string $authKey
-     * @param Name $name
+     * @param Name|null $name
      *
      * @return self
      */
-    public static function create($id, $password, $email, $authKey, Name $name)
+    public static function create($email, $password, $authKey, Name $name = null)
     {
         $model = new self();
 
         $model->setAttributes([
-            'id'            => $id,
-            'password'      => $password,
             'email'         => $email,
+            'password'      => $password,
             'auth_key'      => $authKey,
-            'name'          => $name->getFirst(),
-            'surname'       => $name->getLast(),
+            'name'          => $name ? $name->getFirst() : null,
+            'surname'       => $name ? $name->getLast() : null,
             'date_create'   => date('Y-m-d H:i:s')
         ], false);
 

@@ -18,7 +18,7 @@ return \yii\helpers\ArrayHelper::merge([
          * @see http://www.yiiframework.com/doc-2.0/yii-web-user.html
          */
         'user' => [
-            'identityClass'         => 'common\services\yii\UserIdentity',
+            'identityClass'         => 'common\entities\user\Identity',
             'enableAutoLogin'       => true,
             'loginUrl'              => '/sign-in',
             'authTimeout'			=> 21600, // 6 hours

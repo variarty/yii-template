@@ -7,14 +7,31 @@ namespace common\services;
  */
 
 use Yii;
+use yii\base\Security;
 use common\entities\user\Identity;
 use common\services\dto\UserAuthDto;
 use common\services\exceptions\WrongAuthDataException;
 
-class UserAuthService extends BaseService implements IUserAuthInterface
+class UserAuthService extends BaseService
 {
     /**
-     * @inheritdoc
+     * @var Security $security
+     */
+    private $security;
+
+    /**
+     * UserRegistrationService constructor.
+     * @param Security $security
+     */
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
+    /**
+     * @param UserAuthDto $dto
+     * @return bool
+     * @throws WrongAuthDataException
      */
     public function signIn(UserAuthDto $dto) :bool
     {
@@ -26,9 +43,9 @@ class UserAuthService extends BaseService implements IUserAuthInterface
             throw new WrongAuthDataException();
         }
 
-        $yiiUser = Yii::$app->user;
+        $webUser = Yii::$app->user;
 
-        return $yiiUser->login($user, $yiiUser->absoluteAuthTimeout);
+        return $webUser->login($user, $webUser->absoluteAuthTimeout);
     }
 
     /**
@@ -36,7 +53,7 @@ class UserAuthService extends BaseService implements IUserAuthInterface
      */
     public function validatePassword($signInPassword, $userPasswordHash) :bool
     {
-        $security = Yii::$app->getSecurity();
+        $security = $this->security;
 
         return $security->validatePassword($signInPassword, $userPasswordHash);
     }

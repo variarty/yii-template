@@ -47,7 +47,7 @@ class SignInForm extends Model
     /**
      * @return UserAuthDto
      */
-    public function getUserAuthDto()
+    public function getDto()
     {
         /** @var UserAuthDto $dto */
         $dto = Yii::configure(new UserAuthDto(), [

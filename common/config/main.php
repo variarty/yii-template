@@ -2,11 +2,11 @@
 
 return [
     'sourceLanguage'    => 'en-US',
-	'language'          => 'ru-RU',
-	'bootstrap'		    => ['log'],
-	'vendorPath'        => dirname(__DIR__) . '/../vendor',
+    'language'          => 'ru-RU',
+    'bootstrap'         => ['log'],
+    'vendorPath'        => dirname(__DIR__) . '/../vendor',
 
-	'components' => [
+    'components' => [
         /**
          * App Database.
          */

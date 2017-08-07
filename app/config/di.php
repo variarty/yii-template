@@ -4,8 +4,13 @@
  * Declare some interfaces
  */
 Yii::$container->set(
-    common\services\IUserAuthInterface::class,
+    'userAuthService',
     common\services\UserAuthService::class
+);
+
+Yii::$container->set(
+    'userRegistrationService',
+    common\services\UserRegistrationService::class
 );
 
 /**

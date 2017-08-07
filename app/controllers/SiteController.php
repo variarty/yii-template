@@ -8,6 +8,7 @@ namespace app\controllers;
 
 use Yii;
 use app\forms\SignInForm;
+use app\forms\SignUpForm;
 use common\services\exceptions\WrongAuthDataException;
 
 class SiteController extends BaseController
@@ -30,7 +31,7 @@ class SiteController extends BaseController
         if ($form->load($post) && $form->validate()) {
             try {
                 $service = $this->getUserAuthService();
-                $service->signIn($form->getUserAuthDto());
+                $service->signIn($form->getDto());
 
                 return $this->goHome();
             } catch (WrongAuthDataException $e) {
@@ -51,7 +52,19 @@ class SiteController extends BaseController
      */
     public function actionSignUp()
     {
-        return $this->render('sign-up');
+        $form = new SignUpForm();
+        $post = Yii::$app->request->post();
+
+        if ($form->load($post) && $form->validate()) {
+            $service = $this->getUserRegistrationService();
+            $service->signUp($form->getDto());
+
+            return $this->goHome();
+        }
+
+        return $this->render('sign-up', [
+            'signUp' => $form
+        ]);
     }
 
     /**
