@@ -2,8 +2,8 @@
 namespace app\controllers;
 
 /**
+ * Main page for authorized user.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 use Yii;

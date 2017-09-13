@@ -2,8 +2,8 @@
 namespace common\services\dto;
 
 /**
+ * Dto for UserRegistrationService.
  * @author Artem Rasskosov
- * @since 07.08.2017
  */
 
 class UserRegistrationDto

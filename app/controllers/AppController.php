@@ -2,8 +2,8 @@
 namespace app\controllers;
 
 /**
+ * Base controller for authorized user.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 use yii\filters\AccessControl;

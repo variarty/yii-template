@@ -2,8 +2,8 @@
 namespace app\assets;
 
 /**
+ * Main application asset bundle.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 use yii\web\AssetBundle;
 

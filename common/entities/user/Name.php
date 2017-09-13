@@ -2,8 +2,8 @@
 namespace common\entities\user;
 
 /**
+ * User name value object.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 class Name

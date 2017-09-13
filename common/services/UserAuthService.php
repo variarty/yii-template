@@ -2,8 +2,8 @@
 namespace common\services;
 
 /**
+ * Auth user in system.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 use Yii;

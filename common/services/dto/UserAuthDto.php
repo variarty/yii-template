@@ -2,8 +2,8 @@
 namespace common\services\dto;
 
 /**
+ * Dto for UserAuthService.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 class UserAuthDto

@@ -2,8 +2,8 @@
 namespace common\entities\user;
 
 /**
+ * Main class for user entity.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 use DateTimeImmutable;

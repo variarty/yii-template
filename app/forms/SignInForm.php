@@ -2,8 +2,8 @@
 namespace app\forms;
 
 /**
+ * Form for login user.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 use Yii;

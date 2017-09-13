@@ -35,6 +35,7 @@ app\assets\AppAsset::register($this);
             ]);
             echo Nav::widget([
                 'items' => [
+                    ['label' => Yii::t('app', 'Sign in'), 'url' => ['/site/sign-in']],
                     ['label' => Yii::t('app', 'Sign up'), 'url' => ['/site/sign-up']],
                     ['label' => Yii::t('app', 'Password recovery'), 'url' => ['/site/password-recovery']],
                 ],

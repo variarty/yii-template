@@ -2,8 +2,8 @@
 namespace common\services;
 
 /**
+ * Add new user.
  * @author Artem Rasskosov
- * @since 07.08.2017
  */
 
 use yii\base\Security;
@@ -43,13 +43,30 @@ class UserRegistrationService extends BaseService
     {
         $entity = User::create(
             $dto->email,
-            $this->security->generatePasswordHash($dto->password),
-            $this->security->generateRandomString()
+            $this->getPasswordHash($dto->password),
+            $this->getNewAuthKey()
         );
 
         $entity->save();
 
         return $auth ? $this->signIn($dto) : true;
+    }
+
+    /**
+     * @param string $password
+     * @return string
+     */
+    private function getPasswordHash($password)
+    {
+        return $this->security->generatePasswordHash($password);
+    }
+
+    /**
+     * @return string
+     */
+    private function getNewAuthKey()
+    {
+        return $this->security->generateRandomString();
     }
 
     /**

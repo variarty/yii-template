@@ -2,8 +2,8 @@
 namespace app\forms;
 
 /**
+ * Form for registration new user.
  * @author Artem Rasskosov
- * @since 06.08.2017
  */
 
 use Yii;

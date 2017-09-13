@@ -2,8 +2,9 @@
 namespace common\services\exceptions;
 
 /**
+ * Wrong auth data.
+ * Main usage: UserAuthService.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 
 use Exception;

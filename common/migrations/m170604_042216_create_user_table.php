@@ -1,9 +1,7 @@
 <?php
 /**
- * Create user table
- *
+ * Create user table.
  * @author Artem Rasskosov
- * @since 16.07.2017
  */
 use yii\db\Migration;
 

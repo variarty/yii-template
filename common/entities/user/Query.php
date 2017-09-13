@@ -2,8 +2,8 @@
 namespace common\entities\user;
 
 /**
+ * User active query.
  * @author Artem Rasskosov
- * @since 17.07.2017
  */
 
 use yii\db\ActiveQuery;

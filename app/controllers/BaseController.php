@@ -2,8 +2,8 @@
 namespace app\controllers;
 
 /**
+ * Base controller.
  * @author Artem Rasskosov
- * @since 02.07.2017
  */
 
 use Yii;

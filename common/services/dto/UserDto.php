@@ -2,8 +2,8 @@
 namespace common\services\dto;
 
 /**
+ * Main user dto.
  * @author Artem Rasskosov
- * @since 06.08.2017
  */
 
 class UserDto

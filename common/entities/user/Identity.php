@@ -2,8 +2,8 @@
 namespace common\entities\user;
 
 /**
+ * Identity class for Yii.
  * @author Artem Rasskosov
- * @since 18.07.2017
  */
 
 use yii\web\IdentityInterface;
