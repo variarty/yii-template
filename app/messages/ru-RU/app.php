@@ -9,8 +9,12 @@ return [
     'Surname'                   => 'Фамилия',
     'Email'                     => 'Email',
     'Password'                  => 'Пароль',
+    'Repeat password'           => 'Повторите пароль',
     'Repeat your password'      => 'Повторите пароль',
     'Password recovery'         => 'Восстановление пароля',
     'Required fields'           => 'Обязательные поля',
     'Additional information'    => 'Дополнительная информация',
+    'Recovery'                  => 'Восстановить',
+    'Change password'           => 'Сменить пароль',
+    'New password'              => 'Новый пароль',
 ];

@@ -8,7 +8,7 @@ namespace app\forms;
 
 use Yii;
 use yii\base\Model;
-use common\entities\user\Identity;
+use common\entities\user\User;
 use common\services\dto\UserRegistrationDto;
 
 class SignUpForm extends Model
@@ -53,7 +53,7 @@ class SignUpForm extends Model
      */
     public function checkUnique($attribute, $params)
     {
-        if (null !== $user = Identity::findIdentityByLogin($this->email)) {
+        if (null !== $user = User::findOne(['email' => $this->email])) {
             $this->addError('email', Yii::t('app/error', 'User already exist'));
         }
     }
@@ -78,8 +78,9 @@ class SignUpForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'     => Yii::t('app', 'Email'),
-            'password'  => Yii::t('app', 'Password'),
+            'email'             => Yii::t('app', 'Email'),
+            'password'          => Yii::t('app', 'Password'),
+            'passwordRepeat'    => Yii::t('app', 'Repeat password'),
         ];
     }
 }

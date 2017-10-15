@@ -2,18 +2,18 @@
 namespace common\services\exceptions;
 
 /**
- * Wrong auth data.
- * Main usage: UserAuthService.
+ * User not found.
+ * Main usage: UserPasswordRecoveryService.
  * @author Artem Rasskosov
  */
 
-class WrongAuthDataException extends BaseException
+class UserNotFoundException extends BaseException
 {
     /**
      * @inheritdoc
      */
     public function __construct()
     {
-        parent::__construct('Wrong auth data');
+        parent::__construct('User not found');
     }
 }

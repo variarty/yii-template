@@ -2,5 +2,5 @@
 
 return [
     'class' => 'yii\swiftmailer\Mailer',
-    'useFileTransport' => !YII_ENV_PROD
+    'useFileTransport' => !YII_ENV_PROD,
 ];

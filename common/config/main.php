@@ -22,6 +22,11 @@ return [
          */
         'log' => require 'log.php',
         /**
+         * Yii2 cache component.
+         * @see http://www.yiiframework.com/doc-2.0/yii-caching-filecache.html
+         */
+        'cache' => require 'cache.php',
+        /**
          * Formatter array.
          * @see http://www.yiiframework.com/doc-2.0/yii-i18n-formatter.html
          */

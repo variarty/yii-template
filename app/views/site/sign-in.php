@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
 
         <?php if (Yii::$app->getSession()->hasFlash('authError')) : ?>
             <div class="alert alert-danger" role="alert">
-                <?= Yii::t('app/error', 'Wrong login or password')?>
+                <?= Yii::t('app/error', 'Wrong login or password.')?>
             </div>
         <?php endif; ?>
 

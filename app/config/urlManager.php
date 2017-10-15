@@ -15,5 +15,6 @@ return [
         'sign-up' => 'site/sign-up',
         'sign-in' => 'site/sign-in',
         'password-recovery' => 'site/password-recovery',
+        'password-change/<token:\w+>' => 'site/password-change',
     ]
 ];

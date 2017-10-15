@@ -8,24 +8,15 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use common\services\UserAuthService;
-use common\services\UserRegistrationService;
 
 abstract class BaseController extends Controller
 {
     /**
-     * @return UserAuthService
+     * @param $nameInContainer
+     * @return mixed
      */
-    public function getUserAuthService()
+    protected function get($nameInContainer)
     {
-        return Yii::$container->get('userAuthService');
-    }
-
-    /**
-     * @return UserRegistrationService
-     */
-    public function getUserRegistrationService()
-    {
-        return Yii::$container->get('userRegistrationService');
+        return Yii::$container->get($nameInContainer);
     }
 }

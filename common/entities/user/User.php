@@ -126,4 +126,12 @@ class User extends ActiveRecord
 
         return $dateCreate ?? $dateCreate = new DateTimeImmutable($this->getAttribute('date_create'));
     }
+
+    /**
+     * @param string $newPassword
+     */
+    public function changePassword($newPassword)
+    {
+        $this->setAttribute('password', $newPassword);
+    }
 }
