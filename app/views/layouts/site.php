@@ -6,6 +6,7 @@ use yii\helpers\Html;
 
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use common\widgets\Alert;
 
 app\assets\AppAsset::register($this);
 ?>
@@ -46,6 +47,7 @@ app\assets\AppAsset::register($this);
         </header>
 
         <div class="wrap container">
+            <?= Alert::widget([]); ?>
             <?= $content ?>
         </div>
 

@@ -8,7 +8,6 @@ use yii\widgets\ActiveForm;
 /** @var $passwordChange app\forms\PasswordChangeForm */
 ?>
 
-
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
@@ -30,13 +29,4 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
     </div>
-
-    <div class="col-md-8">
-        <?php if (Yii::$app->getSession()->hasFlash('passwordChanged')) : ?>
-            <div class="alert alert-success" role="alert">
-                <?= Yii::t('app/msg', 'Password changed successfully.')?>
-            </div>
-        <?php endif; ?>
-    </div>
-
 </div>

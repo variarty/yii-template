@@ -10,8 +10,21 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
+        <?php if (Yii::$app->getSession()->hasFlash('authError')) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?= Yii::t('app/error', 'Wrong login or password.')?>
+            </div>
+        <?php endif; ?>
 
+        <?php if (Yii::$app->getSession()->hasFlash('passwordChanged')) : ?>
+            <div class="alert alert-success" role="alert">
+                <?= Yii::t('app/msg', 'Password changed successfully.')?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
                 <?php
@@ -30,12 +43,5 @@ use yii\widgets\ActiveForm;
                 ?>
             </div>
         </div>
-
-        <?php if (Yii::$app->getSession()->hasFlash('authError')) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?= Yii::t('app/error', 'Wrong login or password.')?>
-            </div>
-        <?php endif; ?>
-
     </div>
 </div>
