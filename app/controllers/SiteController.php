@@ -50,7 +50,7 @@ class SiteController extends BaseController
                 return $this->goHome();
             } catch (WrongAuthDataException $e) {
                 $session = Yii::$app->getSession();
-                $session->addFlash('authError');
+                $session->addFlash('wrongAuthData');
             }
         }
 
@@ -99,7 +99,9 @@ class SiteController extends BaseController
             $service->sendEmail($form->getDto());
 
             $session = Yii::$app->getSession();
-            $session->addFlash('emailSend');
+            $session->addFlash('recoveryPasswordEmailSend');
+
+            return $this->redirect(['sign-in']);
         }
 
         return $this->render('password-recovery', [

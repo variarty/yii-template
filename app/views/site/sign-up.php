@@ -11,7 +11,6 @@ use yii\widgets\ActiveForm;
 
 <div class="row">
     <div class="col-md-4">
-
         <div class="panel panel-default">
             <div class="panel-body">
                 <?php
@@ -34,6 +33,5 @@ use yii\widgets\ActiveForm;
                 ?>
             </div>
         </div>
-
     </div>
 </div>

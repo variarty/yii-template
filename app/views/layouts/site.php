@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use common\widgets\Alert;
+use app\widgets\alert\Alert;
 
 app\assets\AppAsset::register($this);
 ?>
