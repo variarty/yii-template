@@ -12,29 +12,14 @@ use stdClass;
 class AlertMessages
 {
     /**
-     * @var array $messages
+     * AlertMessages constructor.
      */
-    private static $messages = [
-        // Errors
-        'wrongAuthData' => [
-            'category' => 'app/error',
-            'text' => 'Wrong login or password.',
-            'type' => AlertType::ERROR,
-        ],
+    public static function getMessages()
+    {
+        static $messages;
 
-        // Success
-        'passwordChanged' => [
-            'category' => 'app/msg',
-            'text' => 'Password changed successfully.',
-            'type' => AlertType::SUCCESS,
-        ],
-
-        'recoveryPasswordEmailSend' => [
-            'category' => 'app/msg',
-            'text' => 'Instructions for password recovery sent to you by email.',
-            'type' => AlertType::SUCCESS,
-        ],
-    ];
+        return $messages ?? $messages = require_once 'messages.php';
+    }
 
     /**
      * @param string $key
@@ -42,7 +27,7 @@ class AlertMessages
      */
     public static function isExists(string $key)
     {
-        return isset(self::$messages[$key]);
+        return isset(self::getMessages()[$key]);
     }
 
     /**
@@ -53,7 +38,7 @@ class AlertMessages
     public static function get(string $key): stdClass
     {
         if (self::isExists($key)) {
-            $msg = self::$messages[$key];
+            $msg = self::getMessages()[$key];
             $dto = new stdClass();
 
             $dto->type = $msg['type'];

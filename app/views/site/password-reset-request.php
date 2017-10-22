@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 /** @var $this yii\web\View */
 /** @var $form yii\widgets\ActiveForm */
-/** @var $passwordRecovery app\forms\PasswordRecoveryForm */
+/** @var $passwordResetRequest app\forms\PasswordResetRequestForm */
 ?>
 
 <div class="row">
@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
                 <?php
                 $form = ActiveForm::begin();
 
-                echo $form->field($passwordRecovery, 'email')->input('email', [
+                echo $form->field($passwordResetRequest, 'email')->input('email', [
                     'placeholder' => Yii::t('app', 'Your email'),
                 ])->label(false);
 

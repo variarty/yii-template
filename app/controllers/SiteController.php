@@ -11,18 +11,24 @@ use Yii;
 use app\forms\{
     SignInForm,
     SignUpForm,
-    PasswordChangeForm,
-    PasswordRecoveryForm
+    PasswordResetForm,
+    PasswordResetRequestForm
 };
 
 use common\services\{
+    exceptions\UnknownErrorException,
     UserAuthService,
     UserRegistrationService,
-    UserPasswordRecoveryService,
+    UserPasswordResetService,
+    UserPasswordResetRequestService,
+    exceptions\UserNotFoundException,
     exceptions\WrongAuthDataException
 };
 
-use yii\web\NotFoundHttpException;
+use yii\web\{
+    HttpException,
+    NotFoundHttpException
+};
 
 class SiteController extends BaseController
 {
@@ -83,63 +89,77 @@ class SiteController extends BaseController
     }
 
     /**
-     * Recovery password STEP 1.
+     * Reset password STEP 1.
      * Send email.
      *
      * @return string
+     * @throws HttpException
      */
-    public function actionPasswordRecovery()
+    public function actionPasswordResetRequest()
     {
-        $form = new PasswordRecoveryForm();
+        $form = new PasswordResetRequestForm();
         $post = Yii::$app->request->post();
 
         if ($form->load($post) && $form->validate()) {
-            /** @var UserPasswordRecoveryService $service */
-            $service = $this->get('userPasswordRecovery');
-            $service->sendEmail($form->getDto());
+            try {
+                /** @var UserPasswordResetRequestService $service */
+                $service = $this->get('userPasswordResetRequest');
+                $service->resetPassword($form->email);
 
-            $session = Yii::$app->getSession();
-            $session->addFlash('recoveryPasswordEmailSend');
+                $session = Yii::$app->getSession();
+                $session->addFlash('passwordResetRequestSuccess');
 
-            return $this->redirect(['sign-in']);
+                return $this->redirect(['sign-in']);
+            } catch (UserNotFoundException $e) {
+                $session = Yii::$app->getSession();
+                $session->addFlash('passwordResetRequestEmailNotFound');
+            } catch (UnknownErrorException $e) {
+                throw new HttpException(500);
+            }
         }
 
-        return $this->render('password-recovery', [
-            'passwordRecovery' => $form,
+        return $this->render('password-reset-request', [
+            'passwordResetRequest' => $form
         ]);
     }
 
     /**
-     * Recovery password STEP 2.
+     * Reset password STEP 2.
      * Change password.
      *
      * @throws NotFoundHttpException
      * @param string $token
      * @return string
      */
-    public function actionPasswordChange(string $token)
+    public function actionPasswordReset(string $token)
     {
-        /** @var UserPasswordRecoveryService $service */
-        $service = $this->get('userPasswordRecovery');
-
-        if (!$service->isEmailSent($token)) {
-            throw new NotFoundHttpException(Yii::t('app/error', 'User not found.'));
-        }
-
-        $form = new PasswordChangeForm();
+        $form = new PasswordResetForm(['token' => $token]);
         $post = Yii::$app->request->post();
 
         if ($form->load($post) && $form->validate()) {
-            $service->changePassword($token, $form->password);
+            try {
+                /** @var UserPasswordResetService $service */
+                $service = $this->get('userPasswordReset');
+                $service->resetPassword($form->getDto());
 
-            $session = Yii::$app->getSession();
-            $session->addFlash('passwordChanged');
+                $session = Yii::$app->getSession();
+                $session->addFlash('passwordResetSuccess');
 
-            return $this->redirect(['sign-in']);
+                return $this->redirect(['sign-in']);
+            } catch (UserNotFoundException $e) {
+                throw new NotFoundHttpException();
+            }
         }
 
-        return $this->render('password-change', [
-            'passwordChange' => $form,
+        /** @var UserPasswordResetRequestService $resetRequest */
+        $resetRequest = $this->get('userPasswordResetRequest');
+
+        if (!$resetRequest->isResetRequestExists($token)) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->render('password-reset', [
+            'passwordReset' => $form
         ]);
     }
 }

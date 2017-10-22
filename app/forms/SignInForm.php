@@ -38,7 +38,6 @@ class SignInForm extends Model
             ['email', 'string', 'max' => 31],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => 8],
 
             ['rememberMe', 'default', 'value' => 1],
         ];

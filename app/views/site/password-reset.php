@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 /** @var $this yii\web\View */
 /** @var $form yii\widgets\ActiveForm */
-/** @var $passwordChange app\forms\PasswordChangeForm */
+/** @var $passwordReset app\forms\PasswordResetForm */
 ?>
 
 <div class="row">
@@ -15,11 +15,11 @@ use yii\widgets\ActiveForm;
                 <?php
                 $form = ActiveForm::begin();
 
-                echo $form->field($passwordChange, 'password')->input('password', [
+                echo $form->field($passwordReset, 'password')->input('password', [
                     'placeholder' => Yii::t('app', 'New password'),
                 ])->label(false);
 
-                echo $form->field($passwordChange, 'passwordRepeat')->input('password', [
+                echo $form->field($passwordReset, 'passwordRepeat')->input('password', [
                     'placeholder' => Yii::t('app', 'Repeat password'),
                 ])->label(false);
 

@@ -130,7 +130,7 @@ class User extends ActiveRecord
     /**
      * @param string $newPassword
      */
-    public function changePassword($newPassword)
+    public function resetPassword($newPassword)
     {
         $this->setAttribute('password', $newPassword);
     }

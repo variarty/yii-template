@@ -22,8 +22,13 @@ Yii::$container->set(
 );
 
 Yii::$container->set(
-    'userPasswordRecovery',
-    common\services\UserPasswordRecoveryService::class
+    'userPasswordResetRequest',
+    common\services\UserPasswordResetRequestService::class
+);
+
+Yii::$container->set(
+    'userPasswordReset',
+    common\services\UserPasswordResetService::class
 );
 
 /**
@@ -41,12 +46,4 @@ Yii::$container->set(yii\widgets\ActiveForm::class, [
  */
 Yii::$container->set(yii\mail\MailerInterface::class, function() {
     return Yii::$app->mailer;
-});
-
-/**
- * Set component for Cache.
- * @see http://www.yiiframework.com/doc-2.0/yii-caching-cache.html
- */
-Yii::$container->set(yii\caching\Cache::class, function() {
-    return Yii::$app->cache;
 });

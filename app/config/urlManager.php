@@ -14,7 +14,7 @@ return [
         // Site section
         'sign-up' => 'site/sign-up',
         'sign-in' => 'site/sign-in',
-        'password-recovery' => 'site/password-recovery',
-        'password-change/<token:\w+>' => 'site/password-change',
+        'password-reset-request' => 'site/password-reset-request',
+        'password-reset/<token:\w+>' => 'site/password-reset',
     ]
 ];

@@ -8,8 +8,9 @@ namespace app\forms;
 
 use Yii;
 use yii\base\Model;
+use common\services\dto\UserPasswordResetDto;
 
-class PasswordChangeForm extends Model
+class PasswordResetForm extends Model
 {
     /**
      * @var string $password
@@ -20,6 +21,11 @@ class PasswordChangeForm extends Model
      * @var string $passwordRepeat
      */
     public $passwordRepeat;
+
+    /**
+     * @var string $token
+     */
+    public $token;
 
     /**
      * @inheritDoc
@@ -33,6 +39,20 @@ class PasswordChangeForm extends Model
             ['passwordRepeat', 'required'],
             ['passwordRepeat', 'compare', 'compareAttribute' => 'password', 'operator' => '===']
         ];
+    }
+
+    /**
+     * @return UserPasswordResetDto
+     */
+    public function getDto(): UserPasswordResetDto
+    {
+        /** @var UserPasswordResetDto $dto */
+        $dto = Yii::configure(new UserPasswordResetDto(), [
+            'token'     => $this->token,
+            'password'  => $this->password,
+        ]);
+
+        return $dto;
     }
 
     /**
