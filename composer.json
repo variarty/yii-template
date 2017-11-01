@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.0.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0"
@@ -8,12 +8,14 @@
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
-        "yiisoft/yii2-faker": "~2.0.0"
+        "yiisoft/yii2-faker": "~2.0.0",
+        "phpunit/phpunit": "^6.4"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "App",
-            "Common\\": "Common"
+            "tests\\": "tests/unit",
+            "app\\": "app",
+            "common\\": "common"
         }
     },
     "asset-installer-paths": {

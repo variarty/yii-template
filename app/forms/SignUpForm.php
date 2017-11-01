@@ -37,7 +37,6 @@ class SignUpForm extends Model
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 31],
-            ['email', 'checkUnique'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 8],
@@ -45,17 +44,6 @@ class SignUpForm extends Model
             ['passwordRepeat', 'required'],
             ['passwordRepeat', 'compare', 'compareAttribute' => 'password', 'operator' => '===']
         ];
-    }
-
-    /**
-     * @param string $attribute
-     * @param array $params
-     */
-    public function checkUnique($attribute, $params)
-    {
-        if (null !== $user = User::findOne(['email' => $this->email])) {
-            $this->addError('email', Yii::t('app/error', 'User already exist'));
-        }
     }
 
     /**

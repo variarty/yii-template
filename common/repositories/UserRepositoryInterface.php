@@ -22,4 +22,10 @@ interface UserRepositoryInterface
      * @return User
      */
     public function findByEmail(string $email): User;
+
+    /**
+     * @param string $login
+     * @return bool
+     */
+    public function isUserExist($login): bool;
 }

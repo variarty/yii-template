@@ -9,6 +9,12 @@ return [
         'type' => AlertType::ERROR,
     ],
 
+    'userAlreadyExist' => [
+        'category' => 'app/error',
+        'text' => 'User already exist.',
+        'type' => AlertType::ERROR,
+    ],
+
     'passwordResetRequestEmailNotFound' => [
         'category' => 'app/error',
         'text' => 'User not found.',

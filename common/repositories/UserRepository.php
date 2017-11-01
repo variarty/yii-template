@@ -41,4 +41,18 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
         return $user;
     }
+
+    /**
+     * @param string $login
+     * @return bool
+     */
+    public function isUserExist($login): bool
+    {
+        $count = User::find()
+            ->where(['email' => $login])
+            ->count('id')
+        ;
+
+        return $count ? true : false;
+    }
 }

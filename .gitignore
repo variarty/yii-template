@@ -12,7 +12,8 @@ nbproject
 # Mac DS_Store Files
 .DS_Store
 
-# composer & bower dir
+# composer & bower
+/composer.lock
 /vendor
 
 # npm dir

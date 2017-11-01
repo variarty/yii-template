@@ -16,13 +16,14 @@ use app\forms\{
 };
 
 use common\services\{
-    exceptions\UnknownErrorException,
     UserAuthService,
     UserRegistrationService,
     UserPasswordResetService,
     UserPasswordResetRequestService,
     exceptions\UserNotFoundException,
-    exceptions\WrongAuthDataException
+    exceptions\UnknownErrorException,
+    exceptions\WrongAuthDataException,
+    exceptions\UserAlreadyExistException
 };
 
 use yii\web\{
@@ -76,11 +77,16 @@ class SiteController extends BaseController
         $post = Yii::$app->request->post();
 
         if ($form->load($post) && $form->validate()) {
-            /** @var UserRegistrationService $service */
-            $service = $this->get('userRegistration');
-            $service->signUp($form->getDto());
+            try {
+                /** @var UserRegistrationService $service */
+                $service = $this->get('userRegistration');
+                $service->signUp($form->getDto());
 
-            return $this->goHome();
+                return $this->goHome();
+            } catch (UserAlreadyExistException $e) {
+                $session = Yii::$app->getSession();
+                $session->addFlash('userAlreadyExist');
+            }
         }
 
         return $this->render('sign-up', [

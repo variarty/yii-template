@@ -6,10 +6,16 @@ namespace common\services;
  * @author Artem Rasskosov
  */
 
+use common\services\dto\{
+    UserAuthDto,
+    UserRegistrationDto
+};
+
 use yii\base\Security;
 use common\entities\user\User;
-use common\services\dto\UserAuthDto;
-use common\services\dto\UserRegistrationDto;
+
+use common\repositories\UserRepositoryInterface;
+use common\services\exceptions\UserAlreadyExistException;
 
 class UserRegistrationService extends BaseService
 {
@@ -24,12 +30,22 @@ class UserRegistrationService extends BaseService
     private $security;
 
     /**
+     * @var UserRepositoryInterface $repository
+     */
+    private $repository;
+
+    /**
      * UserRegistrationService constructor.
+     * @param UserRepositoryInterface $repository
      * @param UserAuthService $userAuthService
      * @param Security $security
      */
-    public function __construct(UserAuthService $userAuthService, Security $security)
-    {
+    public function __construct(
+        UserRepositoryInterface $repository,
+        UserAuthService $userAuthService,
+        Security $security
+    ) {
+        $this->repository       = $repository;
         $this->userAuthService  = $userAuthService;
         $this->security         = $security;
     }
@@ -38,9 +54,14 @@ class UserRegistrationService extends BaseService
      * @param UserRegistrationDto $dto
      * @param bool $auth
      * @return bool
+     * @throws UserAlreadyExistException
      */
     public function signUp(UserRegistrationDto $dto, $auth = true): bool
     {
+        if ($this->repository->isUserExist($dto->email)) {
+            throw new UserAlreadyExistException();
+        }
+
         $entity = User::create(
             $dto->email,
             $this->getPasswordHash($dto->password),
