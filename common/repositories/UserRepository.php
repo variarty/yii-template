@@ -44,6 +44,15 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     /**
      * @param string $login
+     * @return User
+     */
+    public function findByLogin(string $login): User
+    {
+        return $this->findByEmail($login);
+    }
+
+    /**
+     * @param string $login
      * @return bool
      */
     public function isUserExist($login): bool

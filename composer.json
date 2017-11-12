@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "tests\\": "tests/unit",
+            "tests\\": "tests",
             "app\\": "app",
             "common\\": "common"
         }

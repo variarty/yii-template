@@ -24,7 +24,7 @@ class Name
      * @param string $first
      * @param string $last
      */
-    public function __construct(string $first, string $last)
+    public function __construct($first, $last)
     {
         $this->first = $first;
         $this->last = $last;

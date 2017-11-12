@@ -9,8 +9,11 @@ namespace common\services;
 use Yii;
 use yii\base\Security;
 use common\entities\user\Identity;
-use common\services\dto\UserAuthDto;
-use common\services\exceptions\WrongAuthDataException;
+
+use common\services\{
+    dto\UserAuthDto,
+    exceptions\WrongAuthDataException
+};
 
 class UserAuthService extends BaseService
 {
@@ -49,6 +52,8 @@ class UserAuthService extends BaseService
     }
 
     /**
+     * @param string $signInPassword
+     * @param string $userPasswordHash
      * @return bool
      */
     public function validatePassword($signInPassword, $userPasswordHash) :bool

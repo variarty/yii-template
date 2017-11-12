@@ -1,5 +1,5 @@
 <?php
-namespace tests\app\forms;
+namespace tests\unit\app\forms;
 
 /**
  * @coversDefaultClass SignInForm

@@ -25,6 +25,12 @@ interface UserRepositoryInterface
 
     /**
      * @param string $login
+     * @return User
+     */
+    public function findByLogin(string $login): User;
+
+    /**
+     * @param string $login
      * @return bool
      */
     public function isUserExist($login): bool;

@@ -8,7 +8,6 @@ namespace app\forms;
 
 use Yii;
 use yii\base\Model;
-use common\entities\user\User;
 use common\services\dto\UserRegistrationDto;
 
 class SignUpForm extends Model
