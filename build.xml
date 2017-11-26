@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="yii-template" default="build">
+    <target name="prepare">
+
+    </target>
+
+    <target name="build" depends="prepare">
+        <echo msg="STEP: Composer install" />
+        <exec command="composer install" />
+
+        <echo msg="STEP: Npm install" />
+        <exec command="npm install" />
+
+        <echo msg="STEP: Build frontend" />
+        <exec command="gulp build" />
+    </target>
+</project>
