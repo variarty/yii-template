@@ -1,5 +1,5 @@
 {
-    "name": "yii-template",
+    "name": "variarty/yii-template",
     "description": "Another Yii2 template.",
     "require": {
         "php": ">=7.0.0",
