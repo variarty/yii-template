@@ -6,6 +6,8 @@ namespace common\services;
  * @author Artem Rasskosov
  */
 
+use Yii;
+
 use common\services\dto\{
     UserAuthDto,
     UserRegistrationDto
@@ -38,16 +40,15 @@ class UserRegistrationService extends BaseService
      * UserRegistrationService constructor.
      * @param UserRepositoryInterface $repository
      * @param UserAuthService $userAuthService
-     * @param Security $security
      */
     public function __construct(
         UserRepositoryInterface $repository,
-        UserAuthService $userAuthService,
-        Security $security
+        UserAuthService $userAuthService
     ) {
         $this->repository       = $repository;
         $this->userAuthService  = $userAuthService;
-        $this->security         = $security;
+
+        $this->security         = Yii::$app->security;
     }
 
     /**

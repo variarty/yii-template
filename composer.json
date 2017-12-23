@@ -4,9 +4,10 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2": "~2.0.13",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-queue": "~2.0.0",
         "yidas/yii2-bower-asset": "~2.0.5"
     },
     "require-dev": {
@@ -18,7 +19,8 @@
         "psr-4": {
             "tests\\": "tests",
             "app\\": "app",
-            "common\\": "common"
+            "common\\": "common",
+            "console\\": "console"
         }
     },
     "asset-installer-paths": {

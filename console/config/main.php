@@ -3,7 +3,7 @@
 return [
     'id'                    => 'Console',
     'name'                  => 'Console application',
-    'bootstrap'             => ['log', 'gii'],
+    'bootstrap'             => ['log', 'queue'],
     'basePath'              => dirname(__DIR__),
     'controllerNamespace'   => 'console\commands',
 
@@ -14,12 +14,20 @@ return [
          */
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => '@common/migrations'
+            'migrationPath' => null,
+            'migrationNamespaces' => [
+                'common\migrations',
+                'yii\queue\db\migrations',
+            ],
         ],
     ],
 
-    'modules' => [
-        'gii' => 'yii\gii\Module',
+    'components' => [
+        /**
+         * Yii2 Queue.
+         * @see https://github.com/yiisoft/yii2-queue
+         */
+        'queue' => require 'queue.php',
     ],
 
     'params' => require 'params.php',

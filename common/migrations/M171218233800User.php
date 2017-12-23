@@ -1,11 +1,14 @@
 <?php
+namespace common\migrations;
+
 /**
  * Create user table.
  * @author Artem Rasskosov
  */
+
 use yii\db\Migration;
 
-class m170716_042216_create_user_table extends Migration
+class M171218233800User extends Migration
 {
     /**
      * @inheritdoc
