@@ -24,11 +24,10 @@ class UserAuthService extends BaseService
 
     /**
      * UserRegistrationService constructor.
-     * @param Security $security
      */
-    public function __construct(Security $security)
+    public function __construct()
     {
-        $this->security = $security;
+        $this->security = Yii::$app->security;
     }
 
     /**

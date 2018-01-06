@@ -67,13 +67,12 @@ class UserPasswordResetRequestService extends BaseService
     /**
      * UserPasswordRecoveryService constructor.
      * @param UserRepositoryInterface $repository
-     * @param MailerInterface $mailer
      */
-    public function __construct(UserRepositoryInterface $repository, MailerInterface $mailer)
+    public function __construct(UserRepositoryInterface $repository)
     {
         $this->repository   = $repository;
-        $this->mailer       = $mailer;
 
+        $this->mailer       = Yii::$app->mailer;
         $this->security     = Yii::$app->security;
         $this->cache        = Yii::$app->cache;
 
@@ -96,6 +95,7 @@ class UserPasswordResetRequestService extends BaseService
     /**
      * @param string $email
      * @throws NotFound
+     * @throws UnknownErrorException
      */
     public function resetPassword(string $email)
     {

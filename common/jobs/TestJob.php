@@ -23,7 +23,6 @@ class TestJob extends BaseObject implements JobInterface
      */
     public function execute($queue)
     {
-        echo $this->msg;die;
-        Yii::info($this->msg);
+        echo $this->msg;
     }
 }
