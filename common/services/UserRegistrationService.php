@@ -63,13 +63,13 @@ class UserRegistrationService extends BaseService
             throw new UserAlreadyExistException();
         }
 
-        $entity = User::create(
+        $user = User::create(
             $dto->email,
             $this->getPasswordHash($dto->password),
             $this->getNewAuthKey()
         );
 
-        $entity->save();
+        $this->repository->save($user);
 
         return $auth ? $this->signIn($dto) : true;
     }
