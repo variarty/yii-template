@@ -12,12 +12,10 @@ nbproject
 # Mac DS_Store Files
 .DS_Store
 
-# composer & bower
+# composer & bower & npm
 /composer.lock
-/vendor
-
-# npm dir
 /node_modules
+/vendor
 
 # assets
 /app/assets/dist/*

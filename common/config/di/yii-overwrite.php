@@ -7,4 +7,5 @@
 Yii::$container->set(yii\widgets\ActiveForm::class, [
     'validateOnBlur'    => false,
     'validateOnChange'  => false,
+    'successCssClass'   => '',
 ]);

@@ -31,8 +31,28 @@ use yii\web\{
     NotFoundHttpException
 };
 
+use yii\filters\AccessControl;
+
 class SiteController extends BaseController
 {
+    /**
+     * @return array
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /**
      * @var string $layout
      */
