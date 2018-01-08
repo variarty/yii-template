@@ -13,7 +13,6 @@ app
     config/              contains application configurations
     controllers/         contains Web controller classes
     forms/               contains Web form classes
-    mail/                contains view files for e-mails
     messages/            contains message translation
     runtime/             contains files generated during runtime
     views/               contains view files for the Web application
@@ -23,6 +22,7 @@ common
     config/              contains shared configurations
     entities/            contains etities classes
     jobs/                contains jobs (tasks)
+    mail/                contains view files for e-mails
     messages/            contains shared messages (core)
     migrations/          contains database migrations
     repositories/        contains classes for working with the database

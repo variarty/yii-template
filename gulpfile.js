@@ -39,7 +39,7 @@ gulp.task('default', function() {
 });
 
 /**
- * Build Twitter Bootstrap with overwrites.
+ * Build Twitter Bootstrap with overrides.
  *
  * @task {bootstrap}
  * @arg {prod} if set - cleanCSS & uglify will be applied
