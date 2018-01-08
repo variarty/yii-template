@@ -7,6 +7,7 @@ namespace app\controllers;
  */
 
 use Yii;
+use yii\web\Response;
 
 class HomeController extends AppController
 {
@@ -15,6 +16,16 @@ class HomeController extends AppController
      */
     public function actionIndex()
     {
-       return 'Home Controller';
+       return $this->render('index');
+    }
+
+    /**
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->redirect(['site/sign-in']);
     }
 }
