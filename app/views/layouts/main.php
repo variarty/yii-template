@@ -1,10 +1,17 @@
 <?php
-use yii\helpers\Html;
 
-/* @var $this \yii\web\View */
+use yii\bootstrap\Nav;
+use yii\bootstrap\Html;
+use yii\bootstrap\NavBar;
+use app\widgets\alert\Alert;
+
 /* @var $content string */
+/* @var $this \yii\web\View */
+/* @var $identity \common\entities\user\User */
 
 app\assets\AppAsset::register($this);
+
+$identity = Yii::$app->user->identity;
 ?>
 
 <?php $this->beginPage() ?>
@@ -24,7 +31,28 @@ app\assets\AppAsset::register($this);
     <body>
         <?php $this->beginBody() ?>
 
-        <header></header>
+        <header>
+            <?php
+            NavBar::begin([
+                'brandLabel' => Html::icon('home'),
+                'brandUrl' => '/',
+            ]);
+            echo Nav::widget([
+                'items' => [
+                    [
+                        'label' => $identity->getName()->getFirst() ?: $identity->getEmail(),
+                        'items' => [
+                            ['label' => Yii::t('app', 'My page'), 'url' => '/'],
+                            '<li class="divider"></li>',
+                            ['label' => Yii::t('app', 'Sign out'), 'url' => '/sign-out'],
+                        ],
+                    ],
+                ],
+                'options' => ['class' => 'navbar-nav navbar-right'],
+            ]);
+            NavBar::end();
+            ?>
+        </header>
 
         <div class="wrap">
             <?= $content ?>

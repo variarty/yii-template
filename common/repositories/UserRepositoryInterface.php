@@ -34,4 +34,10 @@ interface UserRepositoryInterface
      * @return bool
      */
     public function isUserExist($login): bool;
+
+    /**
+     * @param User $user
+     * @return User
+     */
+    public function save(User $user): User;
 }

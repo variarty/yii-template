@@ -37,5 +37,11 @@ return [
          */
         'i18n' => require 'i18n.php',
     ],
+    /**
+     * Aliases.
+     * @see http://www.yiiframework.com/doc-2.0/guide-concept-aliases.html
+     */
+    'aliases' => require 'aliases.php',
+
     'params' => require 'params.php',
 ];

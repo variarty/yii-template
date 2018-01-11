@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
 
 /** @var $this yii\web\View */
@@ -27,6 +27,9 @@ use yii\widgets\ActiveForm;
                 echo Html::submitButton(Yii::t('app', 'Sign in'), ['class' => 'btn btn-primary pull-right']);
                 ActiveForm::end();
                 ?>
+            </div>
+            <div class="panel-footer text-right">
+                <?= Html::a(Yii::t('app', 'Forgot your password?'), 'password-reset-request') ?>
             </div>
         </div>
     </div>

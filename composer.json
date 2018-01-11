@@ -1,23 +1,26 @@
 {
     "name": "variarty/yii-template",
-    "description": "Another Yii2 template.",
+    "description": "Another Yii2 template",
+    "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "yiisoft/yii2": "~2.0.5",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "yiisoft/yii2": "~2.0.13",
+        "yiisoft/yii2-bootstrap": "~2.0.7",
+        "yiisoft/yii2-swiftmailer": "~2.0.7",
+        "yiisoft/yii2-queue": "~2.0.2",
+        "yidas/yii2-composer-bower-skip": "~2.0.13"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.0.0",
-        "yiisoft/yii2-gii": "~2.0.0",
-        "yiisoft/yii2-faker": "~2.0.0",
-        "phpunit/phpunit": "^6.4"
+        "yiisoft/yii2-debug": "~2.0.13",
+        "yiisoft/yii2-gii": "~2.0.6",
+        "yiisoft/yii2-faker": "~2.0.3"
     },
     "autoload": {
         "psr-4": {
             "tests\\": "tests",
             "app\\": "app",
-            "common\\": "common"
+            "common\\": "common",
+            "console\\": "console"
         }
     },
     "asset-installer-paths": {

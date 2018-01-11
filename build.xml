@@ -11,6 +11,9 @@
         <echo msg="STEP: Npm install" />
         <exec command="npm install" />
 
+        <echo msg="STEP: Bower install" />
+        <exec command="bower install" />
+
         <echo msg="STEP: Build frontend" />
         <exec command="gulp build" />
     </target>

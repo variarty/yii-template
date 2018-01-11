@@ -6,6 +6,7 @@
     "gulp-if": "^2.0.2",
     "gulp-less": "^3.3.0",
     "gulp-uglify": "^2.0.1",
+    "gulp-concat": "^2.6.1",
     "yargs": "^6.6.0"
   }
 }

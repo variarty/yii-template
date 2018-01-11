@@ -52,18 +52,18 @@ class UserPasswordResetService extends BaseService
 
     /**
      * @param UserPasswordResetDto $dto
-     * @return bool
+     * @return User
      * @throws NotFound
      */
     public function resetPassword(UserPasswordResetDto $dto)
     {
         try {
             $userId     = $this->service->getRequestInitiatorId($dto->token);
-            $user       = User::findOne($userId);
+            $user       = $this->repository->find($userId);
             $password   = $this->security->generatePasswordHash($dto->password);
 
             $user->resetPassword($password);
-            return $user->save(false);
+            return $this->repository->save($user);
         } catch (UserNotFoundException $e) {
             throw new NotFound();
         }

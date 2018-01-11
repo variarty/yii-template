@@ -1,12 +1,12 @@
 <?php
-use yii\helpers\Html;
-
-/* @var $this \yii\web\View */
-/* @var $content string */
 
 use yii\bootstrap\Nav;
+use yii\bootstrap\Html;
 use yii\bootstrap\NavBar;
 use app\widgets\alert\Alert;
+
+/* @var $content string */
+/* @var $this \yii\web\View */
 
 app\assets\AppAsset::register($this);
 ?>
@@ -38,7 +38,6 @@ app\assets\AppAsset::register($this);
                 'items' => [
                     ['label' => Yii::t('app', 'Sign in'), 'url' => ['/site/sign-in']],
                     ['label' => Yii::t('app', 'Sign up'), 'url' => ['/site/sign-up']],
-                    ['label' => Yii::t('app', 'Password recovery'), 'url' => ['/site/password-reset-request']],
                 ],
                 'options' => ['class' => 'navbar-nav navbar-right'],
             ]);

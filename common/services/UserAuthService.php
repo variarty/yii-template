@@ -7,6 +7,7 @@ namespace common\services;
  */
 
 use Yii;
+use yii\web\User;
 use yii\base\Security;
 use common\entities\user\Identity;
 
@@ -23,12 +24,17 @@ class UserAuthService extends BaseService
     private $security;
 
     /**
-     * UserRegistrationService constructor.
-     * @param Security $security
+     * @var User $user
      */
-    public function __construct(Security $security)
+    private $user;
+
+    /**
+     * UserRegistrationService constructor.
+     */
+    public function __construct()
     {
-        $this->security = $security;
+        $this->user     = Yii::$app->user;
+        $this->security = Yii::$app->security;
     }
 
     /**
@@ -46,9 +52,7 @@ class UserAuthService extends BaseService
             throw new WrongAuthDataException();
         }
 
-        $webUser = Yii::$app->user;
-
-        return $webUser->login($user, $webUser->absoluteAuthTimeout);
+        return $this->user->login($user, $this->user->absoluteAuthTimeout);
     }
 
     /**
