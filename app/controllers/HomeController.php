@@ -22,7 +22,7 @@ class HomeController extends AppController
     /**
      * @return Response
      */
-    public function actionLogout()
+    public function actionSignOut()
     {
         Yii::$app->user->logout();
 

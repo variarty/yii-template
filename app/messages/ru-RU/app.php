@@ -3,6 +3,7 @@
 return [
     'Sign in'                   => 'Войти',
     'Logout'                    => 'Выйти',
+    'Sign out'                  => 'Выйти',
     'Sign up'                   => 'Зарегистрироваться',
     'Your email'                => 'Ваш email',
     'Your password'             => 'Ваш пароль',

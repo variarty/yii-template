@@ -44,7 +44,7 @@ $identity = Yii::$app->user->identity;
                         'items' => [
                             ['label' => Yii::t('app', 'My page'), 'url' => '/'],
                             '<li class="divider"></li>',
-                            ['label' => Yii::t('app', 'Logout'), 'url' => '/logout'],
+                            ['label' => Yii::t('app', 'Sign out'), 'url' => '/sign-out'],
                         ],
                     ],
                 ],

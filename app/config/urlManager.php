@@ -17,6 +17,6 @@ return [
 
         // Home section
         '' => 'home/index',
-        'logout' => 'home/logout',
+        'sign-out' => 'home/sign-out',
     ]
 ];
