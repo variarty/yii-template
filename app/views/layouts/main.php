@@ -36,6 +36,7 @@ $identity = Yii::$app->user->identity;
             NavBar::begin([
                 'brandLabel' => Html::icon('home'),
                 'brandUrl' => '/',
+                'renderInnerContainer' => false,
             ]);
             echo Nav::widget([
                 'items' => [
