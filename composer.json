@@ -1,7 +1,9 @@
 {
     "name": "variarty/yii-template",
     "description": "Another Yii2 template",
+    "keywords": ["yii2", "project template"],
     "type": "project",
+    "license": "BSD-3-Clause",
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.0.0",

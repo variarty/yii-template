@@ -3,7 +3,7 @@
 return [
     'id'                    => 'Console',
     'name'                  => 'Console application',
-    'bootstrap'             => ['log', 'queue'],
+    'bootstrap'             => ['queue'],
     'basePath'              => dirname(__DIR__),
     'controllerNamespace'   => 'console\commands',
 

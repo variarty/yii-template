@@ -45,7 +45,7 @@ class User extends ActiveRecord
             'auth_key'      => $authKey,
             'name'          => $name ? $name->getFirst() : null,
             'surname'       => $name ? $name->getLast() : null,
-            'date_create'   => date('Y-m-d H:i:s')
+            'date_created'   => date('Y-m-d H:i:s')
         ], false);
 
         return $model;
@@ -116,15 +116,15 @@ class User extends ActiveRecord
     /**
      * Date create getter.
      * Readonly property.
-     * Map: 'dateCreate' -> 'date_create'
+     * Map: 'dateCreated' -> 'date_created'
      *
      * @return DateTimeImmutable
      */
     public function getDateCreate()
     {
-        static $dateCreate;
+        static $dateCreated;
 
-        return $dateCreate ?? $dateCreate = new DateTimeImmutable($this->getAttribute('date_create'));
+        return $dateCreated ?? $dateCreated = new DateTimeImmutable($this->getAttribute('date_created'));
     }
 
     /**

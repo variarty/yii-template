@@ -1,10 +1,5 @@
 <?php
 
-// NOTE: Make sure this file is not accessible when deployed to production
-if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1', '192.168.33.1'])) {
-    die('You are not allowed to access this file.');
-}
-
 define('YII_DEBUG', true);
 define('YII_ENV', 'dev');
 

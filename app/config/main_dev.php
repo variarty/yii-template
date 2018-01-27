@@ -6,7 +6,7 @@ return !YII_ENV_DEV ? [] : [
     'modules'   => [
         'debug' => [
             'class' => 'yii\debug\Module',
-            'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.1'],
+            'allowedIPs' => ['*'],
         ],
         'gii' => 'yii\gii\Module',
     ],
