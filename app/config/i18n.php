@@ -9,7 +9,6 @@ return [
                 'app' => 'app.php',
                 'app/msg' => 'msg.php',
                 'app/error' => 'error.php',
-                'app/mail' => 'mail.php',
             ],
         ],
     ],

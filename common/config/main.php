@@ -36,6 +36,11 @@ return [
          * @see http://www.yiiframework.com/doc-2.0/guide-tutorial-i18n.html
          */
         'i18n' => require 'i18n.php',
+        /**
+         * Yii2 Auth manager.
+         * @see http://www.yiiframework.com/doc-2.0/guide-security-authorization.html
+         */
+        'authManager' => require 'rbac.php',
     ],
     /**
      * Aliases.

@@ -77,7 +77,7 @@ class UserPasswordResetRequestService extends BaseService
         $this->cache        = Yii::$app->cache;
 
         $params             = [];
-        $params['from']     = Yii::$app->params['emails.no-reply'];
+        $params['from']     = Yii::$app->params['emails.noreply'];
         $params['subject']  = Yii::t('mail/subject', 'Password recovery');
 
         $this->params       = $params;

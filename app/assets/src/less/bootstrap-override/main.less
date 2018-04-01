@@ -1,0 +1,28 @@
+.table {
+  border: 1px solid @table-border-color;
+
+  > thead {
+    background-color: @table-head-bg;
+  }
+
+  > tbody {
+    background-color: @table-body-bg;
+
+    > tr {
+      > td {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.label {
+  padding: .4em .7em;
+  border-radius: 0;
+}
+
+.help-block {
+  display: block;
+  margin-top: 1px;
+  font-size: .85em;
+}

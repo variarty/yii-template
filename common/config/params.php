@@ -2,5 +2,5 @@
 
 return [
     // Emails
-    'emails.no-reply' => 'no-reply@example.com',
+    'emails.noreply' => 'noreply@example.com',
 ];

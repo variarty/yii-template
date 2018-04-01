@@ -104,13 +104,7 @@ class User extends ActiveRecord
      */
     public function getName()
     {
-        static $name;
-
-        if ($name === null || $this->getDirtyAttributes(['name', 'surname'])) {
-            $name = new Name($this->getAttribute('name'), $this->getAttribute('surname'));
-        }
-
-        return $name;
+        return new Name($this->getAttribute('name'), $this->getAttribute('surname'));
     }
 
     /**
