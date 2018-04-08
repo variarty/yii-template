@@ -17,11 +17,11 @@ use yii\widgets\ActiveForm;
                 $form = ActiveForm::begin();
 
                 echo $form->field($signIn, 'email')->input('email', [
-                    'placeholder' => Yii::t('app', 'Your email'),
+                    'placeholder' => $signIn->getAttributeLabel('email'),
                 ])->label(false);
 
                 echo $form->field($signIn, 'password')->input('password', [
-                    'placeholder' => Yii::t('app', 'Your password'),
+                    'placeholder' => $signIn->getAttributeLabel('password'),
                 ])->label(false);
 
                 echo Html::submitButton(Yii::t('app', 'Sign in'), ['class' => 'btn btn-primary pull-right']);

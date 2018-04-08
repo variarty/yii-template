@@ -17,15 +17,15 @@ use yii\widgets\ActiveForm;
                 $form = ActiveForm::begin();
 
                 echo $form->field($signUp, 'email')->input('email', [
-                    'placeholder' => Yii::t('app', 'Your email'),
+                    'placeholder' => $signUp->getAttributeLabel('email'),
                 ])->label(false);
 
                 echo $form->field($signUp, 'password')->input('password', [
-                    'placeholder' => Yii::t('app', 'Your password'),
+                    'placeholder' => $signUp->getAttributeLabel('password'),
                 ])->label(false);
 
                 echo $form->field($signUp, 'passwordRepeat')->input('password', [
-                    'placeholder' => Yii::t('app', 'Repeat your password'),
+                    'placeholder' => $signUp->getAttributeLabel('passwordRepeat'),
                 ])->label(false);
 
                 echo Html::submitButton(Yii::t('app', 'Sign up'), ['class' => 'btn btn-primary pull-right']);

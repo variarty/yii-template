@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
                 $form = ActiveForm::begin();
 
                 echo $form->field($passwordResetRequest, 'email')->input('email', [
-                    'placeholder' => Yii::t('app', 'Your email'),
+                    'placeholder' => $passwordResetRequest->getAttributeLabel('email'),
                 ])->label(false);
 
                 echo Html::submitButton(Yii::t('app', 'Recovery'), ['class' => 'btn btn-primary pull-right']);

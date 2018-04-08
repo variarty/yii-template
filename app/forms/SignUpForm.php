@@ -65,9 +65,9 @@ class SignUpForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'             => Yii::t('app', 'Email'),
-            'password'          => Yii::t('app', 'Password'),
-            'passwordRepeat'    => Yii::t('app', 'Repeat password'),
+            'email'             => Yii::t('form/label', 'Your email'),
+            'password'          => Yii::t('form/label', 'Your password'),
+            'passwordRepeat'    => Yii::t('form/label', 'Repeat your password'),
         ];
     }
 }

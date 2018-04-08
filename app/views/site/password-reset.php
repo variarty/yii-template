@@ -16,11 +16,11 @@ use yii\widgets\ActiveForm;
                 $form = ActiveForm::begin();
 
                 echo $form->field($passwordReset, 'password')->input('password', [
-                    'placeholder' => Yii::t('app', 'New password'),
+                    'placeholder' => $passwordReset->getAttributeLabel('password'),
                 ])->label(false);
 
                 echo $form->field($passwordReset, 'passwordRepeat')->input('password', [
-                    'placeholder' => Yii::t('app', 'Repeat password'),
+                    'placeholder' => $passwordReset->getAttributeLabel('passwordRepeat'),
                 ])->label(false);
 
                 echo Html::submitButton(Yii::t('app', 'Change password'), ['class' => 'btn btn-primary pull-right']);

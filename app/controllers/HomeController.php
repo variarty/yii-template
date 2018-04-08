@@ -9,6 +9,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Response;
 
+use app\forms\UserForm;
+
 class HomeController extends AppController
 {
     /**
@@ -27,5 +29,17 @@ class HomeController extends AppController
         Yii::$app->user->logout();
 
         return $this->redirect(['site/sign-in']);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionProfile()
+    {
+        $form = new UserForm();
+
+        return $this->render('profile', [
+            'user' => $form,
+        ]);
     }
 }

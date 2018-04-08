@@ -64,8 +64,8 @@ class SignInForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'     => Yii::t('app', 'Email'),
-            'password'  => Yii::t('app', 'Password'),
+            'email'     => Yii::t('form/label', 'Your email'),
+            'password'  => Yii::t('form/label', 'Your password'),
         ];
     }
 }

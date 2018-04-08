@@ -17,6 +17,14 @@ return [
 
         // Home section
         '' => 'home/index',
+        'profile' => 'home/profile',
         'sign-out' => 'home/sign-out',
+
+        // User section
+        'user/list' => 'user/list',
+        'user/add' => 'user/create',
+        'user/edit/<id:\d+>' => 'user/update',
+        'user/view/<id:\d+>' => 'user/view',
+        'user/delete/<id:\d+>' => 'user/delete',
     ]
 ];

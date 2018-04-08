@@ -41,11 +41,18 @@ $identity = Yii::$app->user->identity;
             echo Nav::widget([
                 'items' => [
                     [
+                        'label' => Yii::t('app', 'Users'),
+                        'items' => [
+                            ['label' => Yii::t('app', 'List'), 'url' => ['user/list']],
+                            ['label' => Yii::t('app', 'Add'), 'url' => ['user/create']],
+                        ],
+                    ],
+                    [
                         'label' => $identity->getName()->getFirst() ?: $identity->getEmail(),
                         'items' => [
-                            ['label' => Yii::t('app', 'My page'), 'url' => '/'],
+                            ['label' => Yii::t('app', 'My page'), 'url' => ['home/profile']],
                             '<li class="divider"></li>',
-                            ['label' => Yii::t('app', 'Sign out'), 'url' => '/sign-out'],
+                            ['label' => Yii::t('app', 'Sign out'), 'url' => ['home/sign-out']],
                         ],
                     ],
                 ],
@@ -56,6 +63,9 @@ $identity = Yii::$app->user->identity;
         </header>
 
         <div class="wrap">
+            <div class="col-md-12">
+                <?= Alert::widget([]); ?>
+            </div>
             <?= $content ?>
         </div>
 
