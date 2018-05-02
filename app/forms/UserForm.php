@@ -8,6 +8,8 @@ namespace app\forms;
 
 use Yii;
 use yii\base\Model;
+
+use common\entities\user\User;
 use common\services\dto\UserDto;
 
 class UserForm extends Model
@@ -28,11 +30,6 @@ class UserForm extends Model
     public $surname;
 
     /**
-     * @var string $authKey
-     */
-    public $authKey;
-
-    /**
      * @inheritDoc
      */
     public function rules()
@@ -44,9 +41,6 @@ class UserForm extends Model
 
             ['name', 'required'],
             ['surname', 'required'],
-
-            ['authKey', 'required'],
-            ['authKey', 'string', 'min' => 16],
         ];
     }
 
@@ -60,7 +54,6 @@ class UserForm extends Model
             'email'     => $this->email,
             'name'      => $this->name,
             'surname'   => $this->surname,
-            'authKey'   => $this->authKey,
         ]);
 
         return $dto;
@@ -75,7 +68,6 @@ class UserForm extends Model
             'name' => Yii::t('form/label', 'Name'),
             'surname' => Yii::t('form/label', 'Surname'),
             'email' => Yii::t('form/label', 'Email'),
-            'authKey' => Yii::t('form/label', 'Auth key'),
         ];
     }
 }
