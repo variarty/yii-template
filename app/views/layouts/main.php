@@ -48,7 +48,7 @@ $identity = Yii::$app->user->identity;
                         ],
                     ],
                     [
-                        'label' => $identity->getName()->getFirst() ?: $identity->getEmail(),
+                        'label' => $identity->getName() ?: $identity->getEmail(),
                         'items' => [
                             ['label' => Yii::t('app', 'My page'), 'url' => ['home/profile']],
                             '<li class="divider"></li>',

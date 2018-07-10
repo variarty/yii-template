@@ -9,6 +9,16 @@ namespace common\entities\user;
 use DateTimeImmutable;
 use yii\db\ActiveRecord;
 
+/**
+ * Class User
+ * @property int $id
+ * @property string $email
+ * @property string $password
+ * @property string $auth_key
+ * @property string $name
+ * @property string $surname
+ * @property string $date_created
+ */
 class User extends ActiveRecord
 {
     /**
@@ -27,105 +37,60 @@ class User extends ActiveRecord
         return new Query(get_called_class());
     }
 
-    /**
-     * @param string $email
-     * @param string $password
-     * @param string $authKey
-     * @param Name|null $name
-     *
-     * @return self
-     */
-    public static function create($email, $password, $authKey, Name $name = null)
+    public static function create(string $email, string $password, string $authKey, string $name = null, string $surname = null)
     {
-        $model = new self();
-
-        $model->setAttributes([
-            'email'         => $email,
-            'password'      => $password,
-            'auth_key'      => $authKey,
-            'name'          => $name ? $name->getFirst() : null,
-            'surname'       => $name ? $name->getLast() : null,
-            'date_created'   => date('Y-m-d H:i:s')
-        ], false);
+        $model           = new self();
+        $model->email    = $email;
+        $model->password = $password;
+        $model->auth_key = $authKey;
+        $model->name     = $name;
+        $model->surname  = $surname;
 
         return $model;
     }
 
-    /**
-     * Id getter.
-     * Map: 'id' -> 'id'
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
-        return $this->getAttribute('id');
+        return $this->id;
     }
 
-    /**
-     * Password getter.
-     * Map: 'password' -> 'password'
-     *
-     * @return string
-     */
-    public function getPassword()
+    public function getPassword(): ?string
     {
-        return $this->getAttribute('password');
+        return $this->name;
     }
 
-    /**
-     * Email getter.
-     * Map: 'email' -> 'email'
-     *
-     * @return string
-     */
-    public function getEmail()
+    public function getAuthKey(): ?string
     {
-        return $this->getAttribute('email');
+        return $this->auth_key;
     }
 
-    /**
-     * Auth key getter.
-     * Map: 'authKey' -> 'auth_key'
-     *
-     * @return string
-     */
-    public function getAuthKey()
+    public function getEmail(): ?string
     {
-        return $this->getAttribute('auth_key');
+        return $this->email;
     }
 
-    /**
-     * Full name getter.
-     * Map: 'Name->first' -> 'name'
-     * Map: 'Name->last' -> 'surname'
-     *
-     * @return Name
-     */
-    public function getName()
+    public function getName(): ?string
     {
-        return new Name($this->getAttribute('name'), $this->getAttribute('surname'));
+        return $this->name;
     }
 
-    /**
-     * Date create getter.
-     * Readonly property.
-     * Map: 'dateCreated' -> 'date_created'
-     *
-     * @return DateTimeImmutable
-     */
-    public function getDateCreate()
+    public function getSurname(): ?string
     {
-        static $dateCreated;
-
-        return $dateCreated ?? $dateCreated = new DateTimeImmutable($this->getAttribute('date_created'));
+        return $this->surname;
     }
 
-    /**
-     * @param string $newPassword
-     */
-    public function resetPassword($newPassword)
+    public function getFullName(): string
     {
-        $this->setAttribute('password', $newPassword);
+        return trim("$this->name $this->surname");
+    }
+
+    public function getDateCreated(): ?string
+    {
+        return $this->date_created;
+    }
+
+    public function resetPassword(string $newPassword): void
+    {
+        $this->password = $newPassword;
     }
 }

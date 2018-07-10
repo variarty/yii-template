@@ -9,7 +9,6 @@ namespace tests\unit\common\entities\user;
 
 use DateTimeImmutable;
 use common\entities\user\User;
-use common\entities\user\Name;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase
@@ -21,15 +20,17 @@ class UserTest extends TestCase
      * @covers ::getPassword
      * @covers ::getAuthKey
      * @covers ::getName
+     * @covers ::getSurname
      * @covers ::getDateCreated
      * @dataProvider createProvider
      *
      * @param string $email
      * @param string $password
      * @param string $authKey
-     * @param Name|null $name
+     * @param string $name
+     * @param string $surname
      */
-    public function testCreate($email, $password, $authKey, Name $name = null)
+    public function testCreate($email, $password, $authKey, $name = null, $surname = null)
     {
         $user = User::create(
             $email,
@@ -42,8 +43,8 @@ class UserTest extends TestCase
         $this->assertEquals($email, $user->getEmail());
         $this->assertEquals($authKey, $user->getAuthKey());
         $this->assertEquals($password, $user->getPassword());
-        $this->assertInstanceOf(Name::class, $user->getName());
-        $this->assertInstanceOf(DateTimeImmutable::class, $user->getDateCreate());
+        $this->assertEquals($name, $user->getName());
+        $this->assertEquals($surname, $user->getSurname());
     }
 
     /**
@@ -67,7 +68,7 @@ class UserTest extends TestCase
     public function createProvider()
     {
         return [
-            ['test@test.com', 'password', 'authKey', new Name('first', 'last')],
+            ['test@test.com', 'password', 'authKey', 'first', 'last'],
             ['mail@test.com', 'pass', 'auth', null]
         ];
     }
