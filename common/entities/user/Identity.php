@@ -23,7 +23,10 @@ class Identity extends User implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return self::findOne(['auth_key' => $token]);
+        /** @var self $identity*/
+        $identity = self::find()->findByAuthKey($token);
+
+        return $identity;
     }
 
     /**
@@ -32,7 +35,10 @@ class Identity extends User implements IdentityInterface
      */
     public static function findIdentityByLogin($login)
     {
-        return self::findOne(['email' => $login]);
+        /** @var self $identity*/
+        $identity = self::find()->findByLogin($login);
+
+        return $identity;
     }
 
     /**

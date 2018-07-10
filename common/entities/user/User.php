@@ -56,7 +56,7 @@ class User extends ActiveRecord
 
     public function getPassword(): ?string
     {
-        return $this->name;
+        return $this->password;
     }
 
     public function getAuthKey(): ?string

@@ -10,11 +10,6 @@ use Yii;
 use yii\base\Security;
 use common\entities\user\User;
 
-use common\repositories\{
-    UserRepositoryInterface,
-    exceptions\UserNotFoundException
-};
-
 use common\services\{
     dto\UserPasswordResetDto,
     exceptions\UserNotFoundException as NotFound
@@ -28,26 +23,18 @@ class UserPasswordResetService extends BaseService
     private $security;
 
     /**
-     * @var UserRepositoryInterface $repository
-     */
-    private $repository;
-
-    /**
      * @var UserPasswordResetRequestService $service
      */
     private $service;
 
     /**
      * UserPasswordRecoveryService constructor.
-     * @param UserRepositoryInterface $repository
      * @param UserPasswordResetRequestService $service
      */
-    public function __construct(UserRepositoryInterface $repository, UserPasswordResetRequestService $service)
+    public function __construct(UserPasswordResetRequestService $service)
     {
-        $this->repository   = $repository;
-        $this->service      = $service;
-
-        $this->security     = Yii::$app->security;
+        $this->service  = $service;
+        $this->security = Yii::$app->security;
     }
 
     /**
@@ -57,15 +44,23 @@ class UserPasswordResetService extends BaseService
      */
     public function resetPassword(UserPasswordResetDto $dto)
     {
-        try {
-            $userId     = $this->service->getRequestInitiatorId($dto->token);
-            $user       = $this->repository->find($userId);
-            $password   = $this->security->generatePasswordHash($dto->password);
+        $userId = $this
+            ->service
+            ->getRequestInitiatorId($dto->token)
+        ;
 
-            $user->resetPassword($password);
-            return $this->repository->save($user);
-        } catch (UserNotFoundException $e) {
+        if (!$user = User::findOne($userId)) {
             throw new NotFound();
         }
+
+        $password = $this
+            ->security
+            ->generatePasswordHash($dto->password)
+        ;
+
+        $user->resetPassword($password);
+        $user->save(false);
+
+        return $user;
     }
 }

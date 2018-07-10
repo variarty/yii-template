@@ -15,8 +15,6 @@ use common\services\dto\{
 
 use yii\base\Security;
 use common\entities\user\User;
-
-use common\repositories\UserRepositoryInterface;
 use common\services\exceptions\UserAlreadyExistException;
 
 class UserRegistrationService extends BaseService
@@ -32,22 +30,12 @@ class UserRegistrationService extends BaseService
     private $security;
 
     /**
-     * @var UserRepositoryInterface $repository
-     */
-    private $repository;
-
-    /**
      * UserRegistrationService constructor.
-     * @param UserRepositoryInterface $repository
      * @param UserAuthService $userAuthService
      */
-    public function __construct(
-        UserRepositoryInterface $repository,
-        UserAuthService $userAuthService
-    ) {
-        $this->repository       = $repository;
+    public function __construct(UserAuthService $userAuthService)
+    {
         $this->userAuthService  = $userAuthService;
-
         $this->security         = Yii::$app->security;
     }
 
@@ -59,7 +47,7 @@ class UserRegistrationService extends BaseService
      */
     public function signUp(UserRegistrationDto $dto, $auth = true): bool
     {
-        if ($this->repository->isUserExist($dto->email)) {
+        if (User::find()->isUserExist($dto->email)) {
             throw new UserAlreadyExistException();
         }
 
@@ -69,7 +57,7 @@ class UserRegistrationService extends BaseService
             $this->getNewAuthKey()
         );
 
-        $this->repository->save($user);
+        $user->save(false);
 
         return $auth ? $this->signIn($dto) : true;
     }

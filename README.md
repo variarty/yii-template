@@ -25,7 +25,6 @@ common
     mail/                contains view files for e-mails
     messages/            contains shared messages (core)
     migrations/          contains database migrations
-    repositories/        contains classes for working with the database
     services/            contains services classes
 console
     commands/            contains console controllers

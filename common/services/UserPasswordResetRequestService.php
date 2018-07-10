@@ -14,11 +14,6 @@ use yii\{
     mail\MailerInterface
 };
 
-use common\repositories\{
-    UserRepositoryInterface,
-    exceptions\UserNotFoundException
-};
-
 use common\services\exceptions\{
     UnknownErrorException,
     UserNotFoundException as NotFound
@@ -55,23 +50,15 @@ class UserPasswordResetRequestService extends BaseService
     private $cache;
 
     /**
-     * @var UserRepositoryInterface $repository
-     */
-    private $repository;
-
-    /**
      * @var array $params
      */
     private $params;
 
     /**
      * UserPasswordRecoveryService constructor.
-     * @param UserRepositoryInterface $repository
      */
-    public function __construct(UserRepositoryInterface $repository)
+    public function __construct()
     {
-        $this->repository   = $repository;
-
         $this->mailer       = Yii::$app->mailer;
         $this->security     = Yii::$app->security;
         $this->cache        = Yii::$app->cache;
@@ -99,13 +86,11 @@ class UserPasswordResetRequestService extends BaseService
      */
     public function resetPassword(string $email)
     {
-        try {
-            $user   = $this->repository->findByEmail($email);
-            $token  = $this->assignTokenWithUser($user);
-        } catch (UserNotFoundException $e) {
+        if (!$user = User::find()->findByEmail($email)) {
             throw new NotFound();
         }
 
+        $token  = $this->assignTokenWithUser($user);
         $this->sendEmail($user, $token);
     }
 
