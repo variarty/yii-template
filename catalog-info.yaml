@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: yii-template
+  annotations:
+    github.com/project-slug: variarty/yii-template
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
